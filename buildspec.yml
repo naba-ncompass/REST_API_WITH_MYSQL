@@ -1,20 +1,16 @@
+
 version: 0.2
+
 phases:
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
       - npm install
   build:
     commands:
-      - echo Build started on `date`
-      - echo Compiling the dist folder
-      - npm run-script build
-  post_build:
-    commands:
-      - echo Build completed on `date`
-      - npm start
-# Include only the files required for your application to run.
+      - npm run build
+
 artifacts:
   files:
-    - app.js
-    - node_modules/**/*
+    - '**/*'
+  discard-paths: no
+  base-directory: build
