@@ -1,33 +1,19 @@
-
 version: 0.2
-port: 8000
-
 phases:
   pre_build:
     commands:
-      - echo Logging in to Amazon ECR...
-      - aws --version
+      - echo Installing source NPM dependencies...
       - npm install
-      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION )
-      - REPOSITORY_URI=368355641188.dkr.ecr.ap-southeast-2.amazonaws.com/us4-naba-docker
-
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...
-      - docker build -t $REPOSITORY_URI:latest .
-      - docker tag $REPOSITORY_URI:latest $REPOSITORY_URI:$IMAGE_TAG
+      - echo Compiling the dist folder
+      - npm run-script build
   post_build:
     commands:
       - echo Build completed on `date`
-      - echo Pushing the Docker images...
-      - docker push $REPOSITORY_URI:latest
-      - docker push $REPOSITORY_URI:$IMAGE_TAG
-      - echo Writing image definitions file...
-      - printf '[{"name":"nodeapp","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
-      - cat imagedefinitions.json 
+# Include only the files required for your application to run.
 artifacts:
   files:
     - app.js
-    - index.html
-    - package.json
+    - node_modules/**/*
