@@ -24,6 +24,6 @@ phases:
       - docker push 368355641188.dkr.ecr.ap-southeast-2.amazonaws.com/us4-naba-docker:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name”:"us4-naba-project","imageUri":"%s"}]' $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
+      - printf '[{"name”:"us4-naba-project","imageUri":"%s"}]' 368355641188.dkr.ecr.ap-southeast-2.amazonaws.com/us4-naba-docker:latest > imagedefinitions.json
 artifacts:
   files: imagedefinitions.json
