@@ -24,3 +24,6 @@ phases:
       - docker push 368355641188.dkr.ecr.ap-southeast-2.amazonaws.com/us4-naba-docker:latest
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
+artifacts:
+  files: 
+      - '**/*'
