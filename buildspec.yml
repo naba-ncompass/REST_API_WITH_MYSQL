@@ -10,6 +10,7 @@ phases:
       - npm install
       - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION )
       - REPOSITORY_URI=368355641188.dkr.ecr.ap-southeast-2.amazonaws.com/us4-naba-docker
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
   build:
     commands:
 
