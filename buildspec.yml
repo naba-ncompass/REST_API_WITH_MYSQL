@@ -5,9 +5,9 @@ phases:
   pre_build:
     commands:
       - npm install
-  run:
+  build:
     commands:
-      - npm start
+      - npm run build
 
 artifacts:
   files:
