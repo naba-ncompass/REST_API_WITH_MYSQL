@@ -1,0 +1,16 @@
+
+version: 0.3
+
+phases:
+  pre_build:
+    commands:
+      - npm install
+  run:
+    commands:
+      - npm start
+
+artifacts:
+  files:
+    - '**/*'
+  discard-paths: no
+  base-directory: build
