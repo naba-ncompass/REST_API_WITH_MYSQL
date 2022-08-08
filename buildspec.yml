@@ -23,5 +23,7 @@ post_build:
       - echo Writing image definitions file...
       - printf '[{"name":"us4-naba-td","imageUri":"%s"}]'    $REPOSITORY_URI:$IMAGE_TAG > imagedefinitions.json
       - cat imagedefinitions.json
+      - $CODEBUILD_SRC_DIR/imagedefinitions.json
+
 artifacts:
   files: imagedefinitions.json
